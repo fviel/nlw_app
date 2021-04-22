@@ -18,6 +18,7 @@ class ScoreCardWidget extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            SizedBox(width:24),
             Expanded(
               flex: 1,
               child: ChartWidget(),
@@ -42,6 +43,7 @@ class ScoreCardWidget extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(width:24),
           ],
         ),
       ),
