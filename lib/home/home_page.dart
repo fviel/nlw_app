@@ -1,22 +1,66 @@
 import 'package:flutter/material.dart';
+import 'package:nlw_app/challenge/quiz_widget.dart';
+import 'package:nlw_app/entities/quiz.dart';
+
+// import 'package:nlw_app/entities/quiz.dart';
+// import 'package:nlw_app/entities/user.dart';
+import 'package:nlw_app/home/home_controller.dart';
 import 'package:nlw_app/widgets/appbar/app_bar.dart';
 import 'package:nlw_app/widgets/levelbutton/level_button_widget.dart';
 import 'package:nlw_app/widgets/quiz_card/quiz_card_widget.dart';
 
+import 'package:nlw_app/core/app_images.dart';
+import 'package:nlw_app/entities/answer.dart';
+import 'package:nlw_app/entities/question.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-
-
-
 class _HomePageState extends State<HomePage> {
+  HomeController controller = new HomeController();
+  var quizzes = [
+    Quiz(
+        title: "NLW5 Flutter",
+        image: AppImages.blocks,
+        level: Level.facil,
+        questions: [
+          Question(title: "Qual a linguagem do flutter?", answers: [
+            Answer(title: "Java", isRight: false),
+            Answer(title: "Dart", isRight: true),
+            Answer(title: "C", isRight: false),
+            Answer(title: "Kotlin", isRight: false),
+          ]),
+        ]
+    ),
+    Quiz(
+        title: "NLW5 Flutter",
+        image: AppImages.blocks,
+        level: Level.facil,
+        questions: [
+          Question(title: "Qual a linguagem do flutter?", answers: [
+            Answer(title: "Java", isRight: false),
+            Answer(title: "Dart", isRight: true),
+            Answer(title: "C", isRight: false),
+            Answer(title: "Kotlin", isRight: false),
+          ]),
+        ]
+    ),
+  ];
+
+  /// executa como se fosse a contrutora
+  @override
+  void initState() {
+    super.initState();
+    controller.getUser();
+    controller.getQuizzes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(user: controller.getUser()),
       body: Column(
         children: [
           SizedBox(height: 6),
@@ -39,20 +83,24 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
                 crossAxisCount: 2,
-                children: [
-                  QuizCardWidget(),
-                  QuizCardWidget(),
-                  QuizCardWidget(),
-                  QuizCardWidget(),
-                  QuizCardWidget(),
-                  QuizCardWidget(),
-                ],
+                children: controller.quizzes.map((e) => QuizCardWidget(
+                  title: e.title,
+                                              image: e.image,
+                                              answeredQuestions: e.questionAnswered,
+                                              totalQuestions: e.questions.length
+                )).toList(),
+
+                // QuizCardWidget(
+                //   title: controller.getQuizzes()[0].title,
+                //   image: controller.getQuizzes()[0].image,
+                //   answeredQuestions: controller.getQuizzes()[0].questionAnswered,
+                //   totalQuestions: controller.getQuizzes()[0].questions.length,
+                // )
               ),
             ),
           ),
         ],
       ),
-
     );
   }
 }

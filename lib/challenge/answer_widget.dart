@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nlw_app/core/app_colors.dart';
 import 'package:nlw_app/core/app_text_styles.dart';
 
+// ignore: must_be_immutable
 class AnswerWidget extends StatelessWidget {
   final String titulo;
   bool isRight = false;
@@ -47,7 +48,7 @@ class AnswerWidget extends StatelessWidget {
             Expanded(
               child: Text(
                   titulo, 
-                  style: AppTextStyles.body
+                  style: isSelected? _selectedTextStyleRight : AppTextStyles.body
               ),
             ),
             Container(

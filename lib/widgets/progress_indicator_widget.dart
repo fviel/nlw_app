@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nlw_app/core/app_colors.dart';
 
+// ignore: must_be_immutable
 class ProgressIndicatorWidget extends StatelessWidget {
   double progresso;
 

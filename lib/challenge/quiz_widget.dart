@@ -3,16 +3,16 @@ import 'package:nlw_app/challenge/answer_widget.dart';
 import 'package:nlw_app/core/app_text_styles.dart';
 
 class QuizWidget extends StatelessWidget {
-  final String titulo;
+  final String title;
 
-  QuizWidget(this.titulo);
+  QuizWidget({this.title});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
-          Text(titulo,
+          Text(title,
           style: AppTextStyles.heading),
           SizedBox(height: 24),
 
