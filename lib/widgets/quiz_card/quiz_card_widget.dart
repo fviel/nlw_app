@@ -11,12 +11,6 @@ class QuizCardWidget extends StatelessWidget {
    int totalQuestions;
 
   QuizCardWidget({this.title, this.image, this.answeredQuestions, this.totalQuestions});
-  //  QuizCardWidget(){
-  //    title = "foo";
-  //    image = "dsasds ";
-  //    answeredQuestions = 10;
-  //    totalQuestions = 100;
-  //  }
 
   double _calcularProgresso(){
     return answeredQuestions/totalQuestions;
