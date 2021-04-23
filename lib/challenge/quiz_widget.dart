@@ -15,7 +15,12 @@ class QuizWidget extends StatelessWidget {
           Text(titulo,
           style: AppTextStyles.heading),
           SizedBox(height: 24),
-          AnswerWidget("Estudando, ué", true, true),
+
+          AnswerWidget("right: false, selected: false", false, false),
+          AnswerWidget("right: true, selected: false", true, false),
+          AnswerWidget("right: false, selected: true", false, true),
+          AnswerWidget("right: true, selected: true", true, true),
+
         ],
       ),
     );
