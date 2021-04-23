@@ -36,9 +36,10 @@ class HomeController {
 
 
     this.quizzes = [
-      Quiz(
+      Quiz.comQtdRespondidas(
           title: "NLW5 Flutter",
           image: AppImages.blocks,
+          questionAnswered: 1,
           level: Level.facil,
           questions: [
         Question(
