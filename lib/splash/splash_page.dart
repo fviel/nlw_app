@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nlw_app/core/app_gradients.dart';
-import 'package:nlw_app/core/app_images.dart';
 
 class SplashPage extends StatelessWidget {
   @override

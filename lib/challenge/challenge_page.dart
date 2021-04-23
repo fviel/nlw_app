@@ -19,11 +19,15 @@ class _ChallengePageState extends State<ChallengePage> {
             child: QuestionIndicatorWidget(),
         ),
       ),
-      body: Column(
-        children: [
-          QuizWidget("Qual a melhor forma de estudar?"),
-          AnswerWidget("Estudando, ué", true, true),
-        ],
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+        child: Column(
+
+          children: [
+            QuizWidget("Qual a melhor forma de estudar?"),
+            // AnswerWidget("Estudando, ué", true, true),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:nlw_app/challenge/answer_widget.dart';
 import 'package:nlw_app/core/app_text_styles.dart';
 
 class QuizWidget extends StatelessWidget {
@@ -15,7 +15,7 @@ class QuizWidget extends StatelessWidget {
           Text(titulo,
           style: AppTextStyles.heading),
           SizedBox(height: 24),
-
+          AnswerWidget("Estudando, ué", true, true),
         ],
       ),
     );

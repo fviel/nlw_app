@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nlw_app/app_widget.dart';
-import 'package:nlw_app/splash/splash_page.dart';
 
 void main() {
   runApp(MyApp());
