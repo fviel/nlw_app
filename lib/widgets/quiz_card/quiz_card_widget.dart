@@ -10,9 +10,30 @@ class QuizCardWidget extends StatelessWidget {
    int answeredQuestions;
    int totalQuestions;
 
-  QuizCardWidget({this.title, this.image, this.answeredQuestions, this.totalQuestions});
+   ///Construtor com validações para evitar erros de cálculos de progresso
+  QuizCardWidget({this.title, this.image, this.answeredQuestions, this.totalQuestions}){
+    if(title == null){
+      title = "Título";
+    }
+
+    if(image == null){
+      image = AppImages.blocks;
+    }
+
+    if(answeredQuestions == null || answeredQuestions < 0){
+      answeredQuestions = 0;
+    }
+
+    if(totalQuestions == null || totalQuestions < 1){
+      totalQuestions = 0;
+    }
+  }
 
   double _calcularProgresso(){
+    //validação para evitar divisão por 0 ou inválida
+    if(totalQuestions == null || totalQuestions < 1){
+      return 0.0;
+    }
     return answeredQuestions/totalQuestions;
   }
 
