@@ -1,8 +1,8 @@
 [
   {
     "title": "NLW5 Flutter",
-    "image": "blocks",
-    "questionAnswered": 1,
+    "image": "assets/images/blocks.png",
+    "questionAnswered": 0,
     "level": "facil",
     "questions": [
       {

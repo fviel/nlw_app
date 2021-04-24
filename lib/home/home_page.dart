@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                       .map((e) => QuizCardWidget(
                           title: e.title,
                           image: e.image,
-                          answeredQuestions: e.questionAnswered,
+                          questionAnswered: e.questionAnswered,
                           totalQuestions: e.questions.length))
                       .toList(),
 

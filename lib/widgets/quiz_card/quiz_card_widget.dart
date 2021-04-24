@@ -7,11 +7,11 @@ import 'package:nlw_app/core/core.dart';
 class QuizCardWidget extends StatelessWidget {
    String title;
    String image;
-   int answeredQuestions;
+   int questionAnswered;
    int totalQuestions;
 
    ///Construtor com validações para evitar erros de cálculos de progresso
-  QuizCardWidget({this.title, this.image, this.answeredQuestions, this.totalQuestions}){
+  QuizCardWidget({this.title, this.image, this.questionAnswered, this.totalQuestions}){
     if(title == null){
       title = "Título";
     }
@@ -20,8 +20,8 @@ class QuizCardWidget extends StatelessWidget {
       image = AppImages.blocks;
     }
 
-    if(answeredQuestions == null || answeredQuestions < 0){
-      answeredQuestions = 0;
+    if(questionAnswered == null || questionAnswered < 0){
+      questionAnswered = 0;
     }
 
     if(totalQuestions == null || totalQuestions < 1){
@@ -34,7 +34,7 @@ class QuizCardWidget extends StatelessWidget {
     if(totalQuestions == null || totalQuestions < 1){
       return 0.0;
     }
-    return answeredQuestions/totalQuestions;
+    return questionAnswered/totalQuestions;
   }
 
   @override
@@ -69,7 +69,7 @@ class QuizCardWidget extends StatelessWidget {
             children: [
               Expanded(
                 flex: 1,
-                child: Text('$answeredQuestions de $totalQuestions', style: AppTextStyles.body11),
+                child: Text('$questionAnswered de $totalQuestions', style: AppTextStyles.body11),
               ),
               Expanded(
                flex: 2,

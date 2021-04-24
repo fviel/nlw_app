@@ -24,7 +24,7 @@ class Answer {
   factory Answer.fromMap(Map<String, dynamic> map) {
     return Answer(
       title: map['title'],
-      isRight: map['isRight'],
+      isRight: map['isRight'] ?? false, //só alguma sperguntas possuem o isRight, por isso o operador de isnull (??)
     );
   }
 
