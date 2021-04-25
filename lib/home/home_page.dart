@@ -110,6 +110,19 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+        bottomNavigationBar: Container(
+          height: 16,
+          color: Colors.grey[100],
+          child: Center(
+            child: Text(
+              "Em desenvolvimento",
+              style: TextStyle(
+                fontSize: 10,
+                color: Colors.blueGrey[100],
+              ),
+            ),
+          ),
+        ),
       );
     } else {
       return Scaffold(
