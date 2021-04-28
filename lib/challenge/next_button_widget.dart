@@ -14,7 +14,6 @@ class NextButtonWidget extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 12,
-
           )
         )
     );
