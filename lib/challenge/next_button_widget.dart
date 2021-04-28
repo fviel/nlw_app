@@ -13,9 +13,10 @@ class NextButtonWidget extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
+            fontSize: 12,
 
           )
-        ));
-
+        )
+    );
   }
 }
