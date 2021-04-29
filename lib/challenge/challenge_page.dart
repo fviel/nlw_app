@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nlw_app/challenge/next_button_widget.dart';
 import 'package:nlw_app/widgets/questionindicator/question_indicator_widget.dart';
 import 'package:nlw_app/challenge/quiz_widget.dart';
 //import 'package:nlw_app/challenge/answer_widget.dart';
@@ -27,6 +28,21 @@ class _ChallengePageState extends State<ChallengePage> {
             QuizWidget(title: "Qual a melhor forma de estudar?"),
             // AnswerWidget("Estudando, ué", true, true),
           ],
+        ),
+      ),
+
+      bottomNavigationBar: SafeArea(
+        bottom: true,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal:20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(child: NextButtonWidget.white(label: 'Pular', onTap: () {print("clicou em pular");},)),
+              SizedBox(width: 7,),
+              Expanded(child: NextButtonWidget.green(label: 'Confirmar', onTap: () {print("clicou em confirmar");},)),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,4 @@
-//import 'package:nlw_app/challenge/challenge_page.dart';
+import 'package:nlw_app/challenge/challenge_page.dart';
 import 'package:flutter/material.dart';
 import 'package:nlw_app/home/home_page.dart';
 
