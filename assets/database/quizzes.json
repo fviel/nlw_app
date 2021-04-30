@@ -25,6 +25,48 @@
             "isRight": false
           }
         ]
+      },
+      {
+        "title": "Vale a pena seguir estudando isso?",
+        "answers": [
+          {
+            "title": "Sim, por curiosidade",
+            "isRight": false
+          },
+          {
+            "title": "Sim, para crescimento pessoal",
+            "isRight": false
+          },
+          {
+            "title": "Não",
+            "isRight": false
+          },
+          {
+            "title": "Não sei",
+            "isRight": true
+          }
+        ]
+      },
+      {
+        "title": "Prefiro fazer o que ao invés de ficar estudando flutter?",
+        "answers": [
+          {
+            "title": "Dormir",
+            "isRight": false
+          },
+          {
+            "title": "Brincar com Helena",
+            "isRight": true
+          },
+          {
+            "title": "Lavar louça",
+            "isRight": false
+          },
+          {
+            "title": "Ver vídeos",
+            "isRight": false
+          }
+        ]
       }
     ]
   }

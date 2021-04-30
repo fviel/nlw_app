@@ -14,7 +14,7 @@ class QuestionIndicatorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 3),
       color: Colors.white,
       child: Column(
         children: [
@@ -31,7 +31,7 @@ class QuestionIndicatorWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 10),
           ProgressIndicatorWidget(currentPage / length),
         ],
       ),

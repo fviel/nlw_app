@@ -8,6 +8,7 @@ import 'package:nlw_app/challenge/quiz_widget.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<Question> questions;
+
   ChallengePage({@required this.questions});
 
   @override
@@ -15,10 +16,32 @@ class ChallengePage extends StatefulWidget {
 }
 
 class _ChallengePageState extends State<ChallengePage> {
-
   final controller = ChallengeController();
 
-    ///Para poder vizualizar os dados que estão na classe acima, eu podia usar um contrutor, ou o comando widget.
+  //pageController é do próprio flutter
+  final pageController = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    //adiciona o listener para o currentPage
+    controller.currentPageNotifier.addListener(() {
+      setState(() {});
+    });
+
+    //adiciona listener do pageControoler, pra atualizar esta tela sempre que trocada a página
+    //sempre que ocorrer um evento de swipe, serei notificado
+    pageController.addListener(() {
+      setState(() {
+        ///seta no currentPage qual é a página atual em int
+        /////somei 1, pois a contagem começa em 1
+        controller.currentPage = pageController.page.toInt() + 1;
+        print('opa, mudou de página');
+      });
+    });
+  }
+
+  ///Para poder vizualizar os dados que estão na classe acima, eu podia usar um contrutor, ou o comando widget.
   //_ChallengePageState(questions);
 
   @override
@@ -37,23 +60,29 @@ class _ChallengePageState extends State<ChallengePage> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
-                      Icons.arrow_back)
-              ),
-              QuestionIndicatorWidget(currentPage: controller.currentPageNotifier.value, length: widget.questions.length),
+                  icon: Icon(Icons.arrow_back)),
+              QuestionIndicatorWidget(
+                  currentPage: controller.currentPageNotifier.value,
+                  length: widget.questions.length),
             ],
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-        child: Column(
-          children: [
-            ///usando o comando widget, consigo acessar os membros da classe deste widget
-            QuizWidget(question: widget.questions[0]),
-            // AnswerWidget("Estudando, ué", true, true),
-          ],
-        ),
+      // body: Padding(
+      //   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+      //   child: Column(
+      //     children: [
+      //       ///usando o comando widget, consigo acessar os membros da classe deste widget
+      //       QuizWidget(question: widget.questions[0]),
+      //       // AnswerWidget("Estudando, ué", true, true),
+      //     ],
+      //   ),
+      // ),
+      body: PageView(
+        controller: pageController,
+        children: widget.questions.map((q) => QuizWidget(question: q)).toList(),
+
+        ///se eu colocar dentro de [], preciso usar o ...
       ),
       bottomNavigationBar: SafeArea(
         bottom: true,
