@@ -24,10 +24,12 @@ class _ChallengePageState extends State<ChallengePage> {
   @override
   void initState() {
     super.initState();
-    //adiciona o listener para o currentPage
-    controller.currentPageNotifier.addListener(() {
-      setState(() {});
-    });
+    //adiciona o listener para o currentPage, mas isto iria rebuildar toda a telaa, e não precisa.
+    //então adicionei um ValueListenableBuilder para rebuildar somente um trecho dela,
+    //esse elemento fica escutando as alterações no notifier currentPage
+    // controller.currentPageNotifier.addListener(() {
+    //   setState(() {});
+    // });
 
     //adiciona listener do pageControoler, pra atualizar esta tela sempre que trocada a página
     //sempre que ocorrer um evento de swipe, serei notificado
@@ -54,16 +56,26 @@ class _ChallengePageState extends State<ChallengePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               ///O BackButton faz o mesmo que navigator.pop()
               //BackButton(),
               IconButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back)),
-              QuestionIndicatorWidget(
+                  icon: Icon(Icons.arrow_back)
+              ),
+
+
+              ValueListenableBuilder<int>(
+                //valueListenable é o que ele vai ouvir
+                  valueListenable: controller.currentPageNotifier,
+                  builder: (context, value, _) =>
+                  QuestionIndicatorWidget(
                   currentPage: controller.currentPageNotifier.value,
-                  length: widget.questions.length),
+                      length: widget.questions.length),
+              ),
+
             ],
           ),
         ),
@@ -79,6 +91,8 @@ class _ChallengePageState extends State<ChallengePage> {
       //   ),
       // ),
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.horizontal,
         controller: pageController,
         children: widget.questions.map((q) => QuizWidget(question: q)).toList(),
 
@@ -93,21 +107,22 @@ class _ChallengePageState extends State<ChallengePage> {
             children: [
               Expanded(
                   child: NextButtonWidget.white(
-                label: 'Pular',
-                onTap: () {
-                  print("clicou em pular");
-                },
-              )),
+                    label: 'Pular',
+                    onTap: () {
+                      pageController.nextPage(duration: Duration(milliseconds: 600), curve: Curves.decelerate);
+                      print("clicou em pular");
+                    },
+                  )),
               SizedBox(
                 width: 7,
               ),
               Expanded(
                   child: NextButtonWidget.green(
-                label: 'Confirmar',
-                onTap: () {
-                  print("clicou em confirmar");
-                },
-              )),
+                    label: 'Confirmar',
+                    onTap: () {
+                      print("clicou em confirmar");
+                    },
+                  )),
             ],
           ),
         ),
