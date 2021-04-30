@@ -47,10 +47,12 @@ class _ChallengePageState extends State<ChallengePage> {
   //_ChallengePageState(questions);
 
   void nextPage() {
-    pageController.nextPage(
-      duration: Duration(milliseconds: 600),
-      curve: Curves.decelerate,
-    );
+    if(controller.currentPage < widget.questions.length) {
+      pageController.nextPage(
+        duration: Duration(milliseconds: 600),
+        curve: Curves.decelerate,
+      );
+    }
   }
 
   @override
@@ -120,6 +122,7 @@ class _ChallengePageState extends State<ChallengePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    if(value < widget.questions.length)
                     Expanded(
                         child: NextButtonWidget.white(
                           label: 'Pular',
