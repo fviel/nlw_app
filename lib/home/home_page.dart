@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nlw_app/challenge/quiz_widget.dart';
 import 'package:nlw_app/core/app_colors.dart';
 import 'package:nlw_app/entities/quiz.dart';
-
+import 'package:nlw_app/challenge/challenge_page.dart';
 // import 'package:nlw_app/entities/quiz.dart';
 // import 'package:nlw_app/entities/user.dart';
 import 'package:nlw_app/home/home_controller.dart';
@@ -22,32 +22,32 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomeController controller = new HomeController();
-  var quizzes = [
-    Quiz(
-        title: "NLW5 Flutter",
-        image: AppImages.blocks,
-        level: Level.facil,
-        questions: [
-          Question(title: "Qual a linguagem do flutter?", answers: [
-            Answer(title: "Java", isRight: false),
-            Answer(title: "Dart", isRight: true),
-            Answer(title: "C", isRight: false),
-            Answer(title: "Kotlin", isRight: false),
-          ]),
-        ]),
-    Quiz(
-        title: "NLW5 Flutter",
-        image: AppImages.blocks,
-        level: Level.facil,
-        questions: [
-          Question(title: "Qual a linguagem do flutter?", answers: [
-            Answer(title: "Java", isRight: false),
-            Answer(title: "Dart", isRight: true),
-            Answer(title: "C", isRight: false),
-            Answer(title: "Kotlin", isRight: false),
-          ]),
-        ]),
-  ];
+  // var quizzes = [
+  //   Quiz(
+  //       title: "NLW5 Flutter",
+  //       image: AppImages.blocks,
+  //       level: Level.facil,
+  //       questions: [
+  //         Question(title: "Qual a linguagem do flutter?", answers: [
+  //           Answer(title: "Java", isRight: false),
+  //           Answer(title: "Dart", isRight: true),
+  //           Answer(title: "C", isRight: false),
+  //           Answer(title: "Kotlin", isRight: false),
+  //         ]),
+  //       ]),
+  //   Quiz(
+  //       title: "NLW5 Flutter",
+  //       image: AppImages.blocks,
+  //       level: Level.facil,
+  //       questions: [
+  //         Question(title: "Qual a linguagem do flutter?", answers: [
+  //           Answer(title: "Java", isRight: false),
+  //           Answer(title: "Dart", isRight: true),
+  //           Answer(title: "C", isRight: false),
+  //           Answer(title: "Kotlin", isRight: false),
+  //         ]),
+  //       ]),
+  // ];
 
   /// executa como se fosse a contrutora
   @override
@@ -96,8 +96,20 @@ class _HomePageState extends State<HomePage> {
                           title: e.title,
                           image: e.image,
                           questionAnswered: e.questionAnswered,
-                          totalQuestions: e.questions.length))
-                      .toList(),
+                          totalQuestions: e.questions.length,
+                          onTap: (){
+                            //print('clicou no card');
+                            if(e.questions != null &&
+                            e != null) {
+                              Navigator.push(
+                                context, MaterialPageRoute(builder: (context) =>
+                                  ChallengePage(questions: e.questions)
+                              ),
+                              );
+                            }
+                          },
+                    )
+                  ).toList(),
 
                   // QuizCardWidget(
                   //   title: controller.getQuizzes()[0].title,

@@ -9,21 +9,19 @@ class QuizCardWidget extends StatelessWidget {
    String image;
    int questionAnswered;
    int totalQuestions;
+   final VoidCallback onTap;
 
    ///Construtor com validações para evitar erros de cálculos de progresso
-  QuizCardWidget({this.title, this.image, this.questionAnswered, this.totalQuestions}){
+  QuizCardWidget({this.title, this.image, this.questionAnswered, this.totalQuestions, this.onTap}){
     if(title == null){
       title = "Título";
     }
-
     if(image == null){
       image = AppImages.blocks;
     }
-
     if(questionAnswered == null || questionAnswered < 0){
       questionAnswered = 0;
     }
-
     if(totalQuestions == null || totalQuestions < 1){
       totalQuestions = 0;
     }
@@ -39,50 +37,53 @@ class QuizCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.fromBorderSide(
-          BorderSide(
-            color: AppColors.border,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          border: Border.fromBorderSide(
+            BorderSide(
+              color: AppColors.border,
+            ),
           ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
         ),
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 40,
-            width: 40,
-            color: Colors.white,
-            child: Image.asset(image),
-          ),
-          SizedBox(height: 12),
-          Text(
-              title,
-              style: AppTextStyles.heading15
-          ),
-          SizedBox(height: 12),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Text('$questionAnswered de $totalQuestions', style: AppTextStyles.body11),
-              ),
-              Expanded(
-               flex: 2,
-                child: LinearProgressIndicator(
-                  value: _calcularProgresso(),
-                  backgroundColor: AppColors.chartSecondary,
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(AppColors.chartPrimary),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 40,
+              width: 40,
+              color: Colors.white,
+              child: Image.asset(image),
+            ),
+            SizedBox(height: 12),
+            Text(
+                title,
+                style: AppTextStyles.heading15
+            ),
+            SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Text('$questionAnswered de $totalQuestions', style: AppTextStyles.body11),
                 ),
-              ),
-            ],
-          ),
-        ],
+                Expanded(
+                 flex: 2,
+                  child: LinearProgressIndicator(
+                    value: _calcularProgresso(),
+                    backgroundColor: AppColors.chartSecondary,
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(AppColors.chartPrimary),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
