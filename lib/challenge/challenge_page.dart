@@ -46,10 +46,10 @@ class _ChallengePageState extends State<ChallengePage> {
   ///Para poder vizualizar os dados que estão na classe acima, eu podia usar um contrutor, ou o comando widget.
   //_ChallengePageState(questions);
 
-  void nextPage(){
+  void nextPage() {
     pageController.nextPage(
-        duration: Duration(milliseconds: 600),
-        curve: Curves.decelerate,
+      duration: Duration(milliseconds: 600),
+      curve: Curves.decelerate,
     );
   }
 
@@ -76,11 +76,11 @@ class _ChallengePageState extends State<ChallengePage> {
 
               ValueListenableBuilder<int>(
                 //valueListenable é o que ele vai ouvir
-                  valueListenable: controller.currentPageNotifier,
-                  builder: (context, value, _) =>
-                  QuestionIndicatorWidget(
-                  currentPage: controller.currentPageNotifier.value,
-                      length: widget.questions.length),
+                valueListenable: controller.currentPageNotifier,
+                builder: (context, value, _) =>
+                    QuestionIndicatorWidget(
+                        currentPage: controller.currentPageNotifier.value,
+                        length: widget.questions.length),
               ),
 
             ],
@@ -101,7 +101,10 @@ class _ChallengePageState extends State<ChallengePage> {
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         controller: pageController,
-        children: widget.questions.map((q) => QuizWidget(question: q, onChange: () {nextPage();})).toList(),
+        children: widget.questions.map((q) =>
+            QuizWidget(question: q, onChange: () {
+              nextPage();
+            })).toList(),
 
         ///se eu colocar dentro de [], preciso usar o ...
       ),
@@ -109,29 +112,39 @@ class _ChallengePageState extends State<ChallengePage> {
         bottom: true,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                  child: NextButtonWidget.white(
-                    label: 'Pular',
-                    onTap: () {
-                      nextPage();
-                      print("clicou em pular");
-                    },
-                  )),
-              // SizedBox(
-              //   width: 7,
-              // ),
-              // Expanded(
-              //     child: NextButtonWidget.green(
-              //       label: 'Confirmar',
-              //       onTap: () {
-              //         print("clicou em confirmar");
-              //       },
-              //     )
-              // ),
-            ],
+          child:
+          ValueListenableBuilder<int>(
+            //valueListenable é o que ele vai ouvir
+            valueListenable: controller.currentPageNotifier,
+            builder: (context, value, _) =>
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                        child: NextButtonWidget.white(
+                          label: 'Pular',
+                          onTap: () {
+                            nextPage();
+                            print("clicou em pular");
+                          },
+                        )
+                    ),
+                    if(value == widget.questions.length)
+                      SizedBox(
+                        width: 7,
+                      ),
+                    if(value == widget.questions.length)
+                      Expanded(
+                          child: NextButtonWidget.green(
+                            label: 'Confirmar',
+                            onTap: () {
+                              Navigator.pop(context);
+                              print("clicou em confirmar");
+                            },
+                          )
+                      ),
+                  ],
+                ),
           ),
         ),
       ),
