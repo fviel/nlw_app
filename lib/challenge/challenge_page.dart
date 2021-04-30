@@ -46,6 +46,13 @@ class _ChallengePageState extends State<ChallengePage> {
   ///Para poder vizualizar os dados que estão na classe acima, eu podia usar um contrutor, ou o comando widget.
   //_ChallengePageState(questions);
 
+  void nextPage(){
+    pageController.nextPage(
+        duration: Duration(milliseconds: 600),
+        curve: Curves.decelerate,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +101,7 @@ class _ChallengePageState extends State<ChallengePage> {
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         controller: pageController,
-        children: widget.questions.map((q) => QuizWidget(question: q)).toList(),
+        children: widget.questions.map((q) => QuizWidget(question: q, onChange: () {nextPage();})).toList(),
 
         ///se eu colocar dentro de [], preciso usar o ...
       ),
@@ -109,20 +116,21 @@ class _ChallengePageState extends State<ChallengePage> {
                   child: NextButtonWidget.white(
                     label: 'Pular',
                     onTap: () {
-                      pageController.nextPage(duration: Duration(milliseconds: 600), curve: Curves.decelerate);
+                      nextPage();
                       print("clicou em pular");
                     },
                   )),
-              SizedBox(
-                width: 7,
-              ),
-              Expanded(
-                  child: NextButtonWidget.green(
-                    label: 'Confirmar',
-                    onTap: () {
-                      print("clicou em confirmar");
-                    },
-                  )),
+              // SizedBox(
+              //   width: 7,
+              // ),
+              // Expanded(
+              //     child: NextButtonWidget.green(
+              //       label: 'Confirmar',
+              //       onTap: () {
+              //         print("clicou em confirmar");
+              //       },
+              //     )
+              // ),
             ],
           ),
         ),

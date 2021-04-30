@@ -4,8 +4,9 @@ import 'package:nlw_app/core/app_text_styles.dart';
 import 'package:nlw_app/entities/question.dart';
 
 class QuizWidget extends StatefulWidget {
+  final VoidCallback onChange;
   final Question question;
-  QuizWidget({this.question});
+  QuizWidget({this.question, this.onChange});
 
   @override
   _QuizWidgetState createState() => _QuizWidgetState();
@@ -31,9 +32,11 @@ class _QuizWidgetState extends State<QuizWidget> {
           for(var i =0; i <widget.question.answers.length ; i++)
             AnswerWidget.answer(
                 answer: widget.question.answers[i],
+                disabled: indexSelected != -1,
                 isSelected: indexSelected == i, //faz um teste
                 onTap: () {
                   indexSelected = i;
+                  widget.onChange();
                   setState(() {
 
                   });
