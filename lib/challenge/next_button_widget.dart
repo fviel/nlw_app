@@ -20,6 +20,11 @@ class NextButtonWidget extends StatelessWidget {
         this.fontColor = AppColors.grey,
         this.borderColor =AppColors.border;
 
+  NextButtonWidget.purple({String this.label, this.onTap})
+      : this.backgroundColor = AppColors.purple,
+        this.fontColor = AppColors.white,
+        this.borderColor =AppColors.border;
+
   NextButtonWidget({this.label, this.backgroundColor, this.fontColor, this.borderColor,  this.onTap});
 
   @override
