@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nlw_app/challenge/challenge_controller.dart';
 import 'package:nlw_app/challenge/next_button_widget.dart';
 import 'package:nlw_app/entities/question.dart';
+import 'package:nlw_app/result_page/result_page.dart';
 import 'package:nlw_app/widgets/questionindicator/question_indicator_widget.dart';
 import 'package:nlw_app/challenge/quiz_widget.dart';
 //import 'package:nlw_app/challenge/answer_widget.dart';
@@ -141,8 +142,9 @@ class _ChallengePageState extends State<ChallengePage> {
                           child: NextButtonWidget.green(
                             label: 'Confirmar',
                             onTap: () {
-                              Navigator.pop(context);
+                              //Navigator.pop(context);
                               print("clicou em confirmar");
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage()));
                             },
                           )
                       ),
