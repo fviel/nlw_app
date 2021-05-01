@@ -9,8 +9,9 @@ import 'package:nlw_app/challenge/quiz_widget.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<Question> questions;
+  final String title;
 
-  ChallengePage({@required this.questions});
+  ChallengePage({@required this.questions, this.title});
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -144,7 +145,7 @@ class _ChallengePageState extends State<ChallengePage> {
                             onTap: () {
                               //Navigator.pop(context);
                               print("clicou em confirmar");
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(title: widget.title)));
                             },
                           )
                       ),

@@ -7,6 +7,10 @@ import 'package:nlw_app/core/app_text_styles.dart';
 import 'package:nlw_app/home/home_page.dart';
 
 class ResultPage extends StatelessWidget {
+  final String title;
+
+  ResultPage({this.title});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +39,7 @@ class ResultPage extends StatelessWidget {
                         style: AppTextStyles.body,
                         children: [
                           TextSpan(
-                              text: '\nNOME DO CURSO ',
+                              text: '\n$title',
                               style: AppTextStyles.bodyBold),
                           TextSpan(
                               text: '\ncom X de Y acertos.',
