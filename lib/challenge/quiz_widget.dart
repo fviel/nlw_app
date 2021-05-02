@@ -4,9 +4,10 @@ import 'package:nlw_app/core/app_text_styles.dart';
 import 'package:nlw_app/entities/question.dart';
 
 class QuizWidget extends StatefulWidget {
-  final VoidCallback onChange;
+  //final VoidCallback onChange; /// essa callback não devolve valores, é void, então não conseguiria obter a info se o usuário acertou
+  final ValueChanged<bool> onSelectedAnswer;
   final Question question;
-  QuizWidget({this.question, this.onChange});
+  QuizWidget({this.question, this.onSelectedAnswer});
 
   @override
   _QuizWidgetState createState() => _QuizWidgetState();
@@ -34,9 +35,10 @@ class _QuizWidgetState extends State<QuizWidget> {
                 answer: widget.question.answers[i],
                 disabled: indexSelected != -1,
                 isSelected: indexSelected == i, //faz um teste
-                onTap: () {
+              //value é o bool isRight da QuizWidget
+                onTap: (value) {
                   indexSelected = i;
-                  widget.onChange();
+                  widget.onSelectedAnswer(value);
                   setState(() {
 
                   });

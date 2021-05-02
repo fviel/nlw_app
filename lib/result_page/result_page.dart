@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:share_plus/share_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:nlw_app/challenge/next_button_widget.dart';
 import 'package:nlw_app/core/app_images.dart';
@@ -8,8 +8,10 @@ import 'package:nlw_app/home/home_page.dart';
 
 class ResultPage extends StatelessWidget {
   final String title;
+  final int totalQuestions;
+  final int qtdRightAnswers;
 
-  ResultPage({this.title});
+  ResultPage({@required this.title, @required this.totalQuestions, @required this.qtdRightAnswers});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class ResultPage extends StatelessWidget {
                               text: '\n$title',
                               style: AppTextStyles.bodyBold),
                           TextSpan(
-                              text: '\ncom X de Y acertos.',
+                              text: '\ncom $qtdRightAnswers de $totalQuestions acertos.',
                               style: AppTextStyles.body),
                         ]),
                     textAlign: TextAlign.center,
@@ -61,6 +63,7 @@ class ResultPage extends StatelessWidget {
                           label: "Compartilhar",
                           onTap: () {
                             print('compartilhar');
+                            Share.share("foo");
                           },
                         ),
                       ),

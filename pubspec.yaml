@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^2.0.0
+  share_plus: ^2.0.3
 
   # The follo wing adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -7,7 +7,7 @@ class QuestionIndicatorWidget extends StatelessWidget {
   final int length;
 
 
-  QuestionIndicatorWidget({this.currentPage, this.length}){}
+  QuestionIndicatorWidget({this.currentPage, this.length});
 
 
 

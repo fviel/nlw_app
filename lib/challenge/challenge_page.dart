@@ -57,6 +57,15 @@ class _ChallengePageState extends State<ChallengePage> {
     }
   }
 
+  ///
+  /// Analisa se a resposta foi correta e envia para a próxima página
+  void onSelected(bool value){
+    if(value){
+      controller.qtdRightAnswers++;
+    }
+    nextPage();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,9 +115,9 @@ class _ChallengePageState extends State<ChallengePage> {
         scrollDirection: Axis.horizontal,
         controller: pageController,
         children: widget.questions.map((q) =>
-            QuizWidget(question: q, onChange: () {
-              nextPage();
-            })).toList(),
+            QuizWidget(
+                question: q,
+                onSelectedAnswer: onSelected)).toList(),
 
         ///se eu colocar dentro de [], preciso usar o ...
       ),
@@ -145,7 +154,12 @@ class _ChallengePageState extends State<ChallengePage> {
                             onTap: () {
                               //Navigator.pop(context);
                               print("clicou em confirmar");
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(title: widget.title)));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(
+                                title: widget.title,
+                                  totalQuestions: widget.questions.length,
+                                  qtdRightAnswers: controller.qtdRightAnswers,)
+                              )
+                              );
                             },
                           )
                       ),

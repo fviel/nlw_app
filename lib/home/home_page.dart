@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nlw_app/challenge/quiz_widget.dart';
 import 'package:nlw_app/core/app_colors.dart';
-import 'package:nlw_app/entities/quiz.dart';
 import 'package:nlw_app/challenge/challenge_page.dart';
-// import 'package:nlw_app/entities/quiz.dart';
-// import 'package:nlw_app/entities/user.dart';
 import 'package:nlw_app/home/home_controller.dart';
 import 'package:nlw_app/home/home_state.dart';
 import 'package:nlw_app/widgets/appbar/app_bar.dart';
 import 'package:nlw_app/widgets/levelbutton/level_button_widget.dart';
 import 'package:nlw_app/widgets/quiz_card/quiz_card_widget.dart';
 
-import 'package:nlw_app/core/app_images.dart';
-import 'package:nlw_app/entities/answer.dart';
-import 'package:nlw_app/entities/question.dart';
 
 class HomePage extends StatefulWidget {
   @override

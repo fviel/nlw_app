@@ -52,7 +52,7 @@ class AppBarWidget extends PreferredSize {
                   ),
                 ),
                 ///Alinha o ScoreCard pra baixo do outro elemento, mesmo dentro da stack
-                Align(alignment: Alignment(0, 1), child: ScoreCardWidget()),
+                Align(alignment: Alignment(0, 1), child: ScoreCardWidget(value: user.score/100)), //dividi por 100 para converter para double
               ],
             ),
           ),

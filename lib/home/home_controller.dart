@@ -1,7 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:nlw_app/core/app_images.dart';
-import 'package:nlw_app/entities/answer.dart';
-import 'package:nlw_app/entities/question.dart';
 import 'package:nlw_app/entities/quiz.dart';
 import 'package:nlw_app/entities/user.dart';
 import 'package:nlw_app/home/home_repository.dart';
@@ -19,13 +16,13 @@ class HomeController {
   ///Mecanismo que bolei para somente liberar a tela após a carga de todos os recursos
   bool carregouUser = false;
   bool carregouQuizzes = false;
-  _alterarEstadoCarregamento(){
-    if(carregouUser == true && carregouQuizzes == true){
-      state = HomeState.sucesso;
-    }else{
-      state = HomeState.loading;
-    }
-  }
+  // _alterarEstadoCarregamento(){
+  //   if(carregouUser == true && carregouQuizzes == true){
+  //     state = HomeState.sucesso;
+  //   }else{
+  //     state = HomeState.loading;
+  //   }
+  // }
 
   User user;
   List<Quiz> quizzes;

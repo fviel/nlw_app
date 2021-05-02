@@ -7,7 +7,8 @@ import 'package:nlw_app/entities/answer.dart';
 class AnswerWidget extends StatelessWidget {
   bool isSelected = false;
   final Answer answer;
-  final VoidCallback onTap;
+  //final VoidCallback onTap; mudei para receber o bool se o user respondeu certo
+  final ValueChanged<bool> onTap;
   final bool disabled;
 
   //AnswerWidget({this.title, this.isRight, this.isSelected}): answer=null;
@@ -37,7 +38,9 @@ class AnswerWidget extends StatelessWidget {
       child: IgnorePointer(
         ignoring: disabled,
         child: GestureDetector(
-          onTap: onTap,
+          onTap: () {
+            onTap(answer.isRight);
+          },
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             decoration: BoxDecoration(
