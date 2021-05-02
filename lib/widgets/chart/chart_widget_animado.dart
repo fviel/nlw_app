@@ -23,7 +23,7 @@ class _ChartWidgetAnimadoState extends State<ChartWidgetAnimado> with SingleTick
   void initAnimation(){
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2)
+      duration: Duration(seconds: 1)
     );
     _animation = Tween<double>(
         begin: 0,
